@@ -8,8 +8,8 @@ Please install the followings tools.
 2. `Npm - last version`
 
 ## Usage in local
-1. `npm install.`
-2. `npm run dev.`
+1. `npm install`
+2. `npm run dev`
 3. go to `http://localhost:7777`
 
 Any doub? please do a pull request!
