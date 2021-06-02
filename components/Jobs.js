@@ -2,6 +2,7 @@ import { useQuery } from "@apollo/client";
 import gql from "graphql-tag";
 import styled from "styled-components";
 import Job from "./Job";
+  import PropTypes from 'prop-types';
 
 export const ALL_JOBS_QUERY = gql`
   query ALL_JOBS_QUERY {
@@ -36,7 +37,7 @@ export const ALL_JOBS_QUERY = gql`
 
 const JobListStyles = styled.div``;
 
-export default function Jobs({ page }) {
+export default function Jobs() {
   const { data, error, loading } = useQuery(ALL_JOBS_QUERY);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
@@ -50,3 +51,7 @@ export default function Jobs({ page }) {
     </div>
   );
 }
+
+Jobs.propTypes = {
+  page: PropTypes.any
+};

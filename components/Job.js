@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import ItemStyles from "./styles/ItemStyles";
 import { flatEndpoint } from "../config";
+import PropTypes from 'prop-types';
 
 const JobImageStyles = styled.div`
   display: grid;
@@ -44,7 +45,7 @@ const ImageStyled = styled.div`
   display: inline-block;
   width: 1.33333em;
   height: 1em;
-  background-image: url(${(props) => props.isoCode  ? `${flatEndpoint}/${props.isoCode}.svg` : `${flatEndpoint}/es.svg`});
+  background-image: url(${(props) => props.isoCode  ? `${props.flatEndpoint}/${props.isoCode}.svg` : `${props.flatEndpoint}/es.svg`});
   background-position: 50% center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -71,7 +72,9 @@ export default function Job({ job }) {
                 <div className="job-tags">
                   {job.tags.map((j, i) => {
                     return (
-                      <TagStyles key={i} isFeatured={job.isFeatured}>{j.name}</TagStyles>
+                      <TagStyles key={i} isFeatured={job.isFeatured}>
+                        {j.name}
+                      </TagStyles>
                     );
                   })}
                 </div>
@@ -80,7 +83,10 @@ export default function Job({ job }) {
             <div className="content-location">
               {job.cities.length > 0 && (
                 <div>
-                  <ImageStyled isoCode={job.cities[0].country.isoCode} ></ImageStyled>
+                  <ImageStyled
+                    isoCode={job.cities[0].country.isoCode}
+                    flatEndpoint={flatEndpoint}
+                  ></ImageStyled>
                   <div>
                     {job.cities.map((jc, i) => {
                       return i === job.cities.length - 1 ? (
@@ -104,4 +110,21 @@ export default function Job({ job }) {
       </div>
     </ItemStyles>
   );
+}
+
+JobImageStyles.propTypes = {
+  url: PropTypes.string
+}
+
+TagStyles.propTypes = {
+  isFeatured: PropTypes.bool
+}
+
+IsFeaturedStyle.propTypes = {
+  isoCode: PropTypes.string,
+  flatEndpoint: PropTypes.string
+}
+
+Job.propTypes = {
+  job: PropTypes.object
 }

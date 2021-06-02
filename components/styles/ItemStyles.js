@@ -5,6 +5,9 @@ const ItemStyles = styled.div`
     props.isFeatured ? "rgb(240,245,255)" : "transparent"};
   padding-bottom: ${(props) =>
     props.isFeatured ? "calc(14px + 4 * ((100vw - 320px) / 1280))" : 0};
+  &:hover {
+      background-color: rgb(240,245,255);
+  }
 
   .content-job {
     display: flex;
@@ -15,6 +18,7 @@ const ItemStyles = styled.div`
     margin: 0 auto;
     padding: calc(14px + 4 * ((100vw - 320px) / 1280))
       calc(28px + 8 * ((100vw - 320px) / 1280));
+    cursor: pointer;
   }
 
   .content-main-details {
