@@ -1,5 +1,7 @@
 This project was made with `Next.js 10.0.5`.
 
+Practice project for consuming https://api.graphql.jobs/ 
+
 ## Environment
 
 Please install the followings tools.
